@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-a-Sketch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="btn">Click Me</button>
+   
+    
+</body>
+    
+
+<script>
+    const body = document.getElementsByTagName("body")[0];
+    const button = document.getElementsByTagName("button")[0];
+
+    const container = document.createElement("div");
+    container.classList.add("container");
+    body.appendChild(container);
+    let sides = 16;
+    pixellate(sides);
+     
+   
+
+function pixellate(num){
+    container.innerHTML = "";
+
+    const rows = []; 
+    for (let x = 0; x < num; x++) {
+
+        // Create row
+        rows[x] = document.createElement("div");
+        rows[x].classList.add("rows");
+        container.appendChild(rows[x]);
+
+        // Create cells inside row
+        for (let y = 0; y < num; y++) {
+            const cell = document.createElement("div");
+            cell.classList.add("cells");
+            rows[x].appendChild(cell);
+            cell.addEventListener("mouseover", () => {cell.style.background = "pink";} )
+        }
+    }
+
+}
+
+
+    function askSides(){
+      sides = prompt("How many grids per side? Enter a number between 2 to 100");
+      (sides > 0 && sides <= 100) ? pixellate(sides):
+      alert("Number must be between 0 and 100");
+      
+    }
+
+    button.addEventListener("click", askSides);
+
+
+
+</script>
+</html>
+
+
+
+
+
+
+<!-- <script>
+    const body = document.getElementsByTagName("body")[0];
+    const btn = document.getElementsByClassName("btn")[0];
+
+    const container = document.createElement("div");
+    container.classList.add("container");
+    body.appendChild(container);
+
+    let rows = new Array();
+    let cells = new Array();
+
+    for(x=0;x<16;x++){
+         rows[x] = document.createElement("div");
+         rows[x].classList.add("rows");
+         container.appendChild(rows[x]);
+        
+        for(y=0;y<16;y++){
+            const cell = document.createElement("div");
+            cell.classList.add("cells");
+            rows[x].appendChild(cells[x][y]);
+        }
+    }
+   
+
+    // let n_rows, n_cols;
+    // function getValue(){
+    //     n_rows = prompt("How many rows will you like to create?");
+    //     n_cols = prompt("How many columns will you like to create?");
+    // }
+
+    // btn.addEventListener("click", getValue);
+
+</script> -->
+
